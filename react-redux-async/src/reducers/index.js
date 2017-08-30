@@ -18,7 +18,6 @@ const rootReducer = handleActions({
   ),
 
   GET_DATA_FAILURE: state => {
-    console.error('')
     state.set('isFetching', false)
     return state;
   },
