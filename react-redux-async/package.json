@@ -1,13 +1,12 @@
 {
-  "name": "my-react-async",
+  "name": "react-redux-async",
   "version": "1.0.0",
   "main": "webpack.config.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "NODE_ENV=development node server.js",
     "build": "NODE_ENV=production webpack -p --config webpack.prod.js --progress"
   },
-  "author": "",
+  "author": "Minghao Pu",
   "license": "ISC",
   "dependencies": {
     "immutable": "^3.8.1",
