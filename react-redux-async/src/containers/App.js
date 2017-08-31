@@ -32,9 +32,8 @@ export default connect(
     
     const { selected } = stateProps;
     const { onClickRefresh } = dispatchProps;
-    let a = Object.assign({}, stateProps, dispatchProps, ownProps, {
+    return Object.assign({}, stateProps, dispatchProps, ownProps, {
       onClickRefresh: onClickRefresh(selected),
     });
-    return a;
   }
 )(Main);

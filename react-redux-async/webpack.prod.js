@@ -9,9 +9,7 @@ module.exports = merge(common, {
     new CleanWebpackPlugin(['dist']),
     new UglifyJSPlugin(),
     new webpack.DefinePlugin({
-      'process.env': {
-        'NODE_ENV': JSON.stringify('production')
-      }
+      __ENV__: JSON.stringify(process.env.NODE_ENV)
     })
   ]
 });
