@@ -11,7 +11,7 @@ const starReducer = handleActions({
   ),
 
   [constants.STAR_FAILURE]: (state, { error }) => {
-    console.error(error);
+    // console.error(error);
     return state;
   },
   [constants.STAR_SUCCESS]: (state, { data }) => (

@@ -1,19 +1,18 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-// import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 
 class User extends Component {
   render() {
     const { user } = this.props;
     return(
       <div className='component-user'>
-        {/* <Link to={`/${user.username}`}>  */}
+        <Link to={`/${user.username}`}> 
             <img src={user.avatar_url} alt={user.username} />
             <h3>
               {user.username} {user.name && <span>{user.name}</span>}
             </h3>
-          
-        {/* </Link> */}
+        </Link>
       </div>
     )
   }

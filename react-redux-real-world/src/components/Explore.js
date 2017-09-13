@@ -16,6 +16,7 @@ class Explore extends Component {
   handleClick(e) {
     const { onSubmitClick } = this.props;
     onSubmitClick(this.getInputValue());
+    this.props.onChange(this.getInputValue());
   }
   render() {
     const { username } = this.props;
@@ -30,7 +31,8 @@ class Explore extends Component {
 
 Explore.propTypes = {
   username: PropTypes.string.isRequired,
-  onSubmitClick: PropTypes.func.isRequired
+  onSubmitClick: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired
 }
 
 export default Explore;
