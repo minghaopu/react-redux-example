@@ -6,7 +6,6 @@ import List from '../../components/List';
 
 class UserPage extends Component {
   render() {
-    
     const { user, isFetching, items } = this.props;
     return (
       <div className='UserPage'>
@@ -28,21 +27,24 @@ UserPage.propTypes = {
   })).isRequired
 }
 
-const mapStateToProps = state => ({
-  user: state.get('user').toJS(),
-  isFetching: state.getIn(['loading', 'isFetching']),
-  items: state.getIn(['star', 'starred']).toJS()
-});
+// const mapStateToProps = (state) => {
+//   console.log(state.toJS());
+//   return {
+//     user: state.get('user').toJS(),
+//     isFetching: state.getIn(['loading', 'isFetching']),
+//     items: state.getIn(['star', 'starred']).toJS(),
+//     username: state.getIn(['router', 'params', 'username'])
+//   }
+// };
 
+const mapStateToProps = (state) => {
+  return {
+    user: state.user.toJS(),
+    isFetching: state.loading.get('isFetching'),
+    items: state.star.get('starred').toJS(),
+    username: state.router.params.username
+  }
+};
 export default connect(
   mapStateToProps
 )(UserPage);
-
-// const mapStateToProps = state => ({
-//   user: state.get('user').toJS(),
-//   isFetching: state.getIn(['loading', 'isFetching'])
-// });
-
-// export default connect(
-//   mapStateToProps
-// )(User);

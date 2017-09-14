@@ -4,8 +4,8 @@ import Explore from '../../components/Explore';
 import { fecthUser } from '../../actions';
 
 const mapStateToProps = state => ({
-  username: state.getIn(['user', 'username'])
-  // username: state.user.get('username')
+  // username: state.getIn(['user', 'username'])
+  username: state.user.get('username')
 });
 
 const mapDispatchToProps = dispatch => ({
