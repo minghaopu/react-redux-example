@@ -6,24 +6,26 @@ const webpackHotMiddleware = require('webpack-hot-middleware');
 
 const app = express();
 
+app.use(express.static(__dirname));
 
 const DEFAULT_PORT = 3000;
-const DEV_DIR = path.join(__dirname, 'src');
+const DEV_DIR = path.join(__dirname, 'dist');
 const HTML_FILE = path.join(DEV_DIR, 'index.html');
 
 
-(function initWebpack() {
-  const webpack = require('webpack');
-  const webpackDevConfig = require('./webpack.dev');
-  const compiler = webpack(webpackDevConfig);
-  app.use(webpackDevMiddleware(compiler, {
-    publicPath: webpackDevConfig.output.publicPath
-  }));
-  app.use(webpackHotMiddleware(compiler));
-})();
+const webpack = require('webpack');
+const webpackDevConfig = require('./webpack.dev');
+const compiler = webpack(webpackDevConfig);
+app.use(webpackDevMiddleware(compiler, {
+  publicPath: webpackDevConfig.output.publicPath
+}));
+app.use(webpackHotMiddleware(compiler));
 
 
-app.get('/', (req, res, next) => {
+console.log(HTML_FILE);
+
+
+app.get('*', (req, res, next) => {
   compiler.outputFileSystem.readFile(HTML_FILE, (err, result) => {
     if (err) {
       return next(err);

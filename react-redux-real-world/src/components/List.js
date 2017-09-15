@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router';
 
 class List extends Component {
   render() {
@@ -25,15 +26,23 @@ class List extends Component {
     }
     return(
       <div className='component-list'>
+        <ul>
         {
-          items.map((item, idx) => 
+          items.map((item, idx) =>
             <li key={idx}>
-              <span>{item.name}</span>
-              <span>{item.owner}</span>
-              <span>{item.description}</span>
+              <h3>
+                <Link to={`/${item.owner}/${item.name}`}>{item.name}</Link>
+                {' by '}
+                <Link to={`/${item.owner}`}>{item.owner}</Link>
+              </h3>
+              {
+                item.description &&
+                <p>{item.description}</p>
+              }
             </li>
           )
         }
+        </ul>
       </div>
     );
   }

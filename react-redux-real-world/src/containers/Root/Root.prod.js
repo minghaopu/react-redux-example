@@ -1,23 +1,22 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Router, Route } from 'react-router'
+import { Provider } from 'react-redux';
+import { ReduxRouter } from 'redux-router';
+
 
 class Root extends Component {
   render() {
-    const { history } = this.props;
+    const { store } = this.props;
     return (
-      <div>
-        <Router history={history}>
-          <Route path="/" component={App}>
-            <Route path="/:username" component={UserPage}/>
-          </Route>
-        </Router>
-      </div>
+      <Provider store={store}>
+        <ReduxRouter />
+      </Provider>
     )
   }
 }
 
 Root.propTypes = {
-  history: PropTypes.object.isRequired
+  store: PropTypes.object.isRequired
 }
+
 export default Root;

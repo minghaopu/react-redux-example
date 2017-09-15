@@ -3,10 +3,7 @@ import { connect } from 'react-redux';
 import Explore from '../../components/Explore';
 import { fecthUser } from '../../actions';
 
-const mapStateToProps = state => ({
-  // username: state.getIn(['user', 'username'])
-  username: state.user.get('username')
-});
+const mapStateToProps = state => ({});
 
 const mapDispatchToProps = dispatch => ({
   onSubmitClick: username => {

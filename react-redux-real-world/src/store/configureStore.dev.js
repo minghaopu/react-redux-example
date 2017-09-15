@@ -3,8 +3,8 @@ import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import { reduxReactRouter } from 'redux-router';
 import createHistory from 'history/lib/createBrowserHistory';
-import rootReducer from '../reducers';
 import Immutable from 'immutable';
+import rootReducer from '../reducers';
 import DevTools from '../containers/DevTools';
 import routes from '../components/Routes'
 
