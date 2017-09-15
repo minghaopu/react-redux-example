@@ -18,7 +18,11 @@ class App extends Component {
   handleChange(nextValue) {
     const { push, fecthUser } = this.props;
     push(nextValue);
-    tfecthUser(nextValue);
+    fecthUser(nextValue);
+  }
+  componentWillReceiveProps(nextProps) {
+    const { username, fecthUser } = nextProps;
+    if (username && username !== '') fecthUser(username);
   }
   render() {
     return (

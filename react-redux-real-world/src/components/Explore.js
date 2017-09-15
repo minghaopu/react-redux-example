@@ -6,17 +6,18 @@ class Explore extends Component {
   //   if (this.props.username)
   // }
   componentWillReceiveProps(nextProps) {
+    console.log(nextProps.username);
     if (nextProps.username !== this.props.username) {
-      this.setInputValue(nextProps.username)
+      this.setInputValue(nextProps.username);
       // const { onSubmitClick } = this.props;
       // onSubmitClick(nextProps.username);
     }
   }
   getInputValue() {
-    return this.refs.input.value
+    return this.refs.input.value;
   }
   setInputValue(val) {
-    this.refs.input.value
+    this.refs.input.value = val;
   }
   handleClick(e) {
     // const { onSubmitClick } = this.props;
