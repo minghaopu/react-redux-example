@@ -41,7 +41,6 @@ const requestUser = username => ({
   username: username
 });
 
-
 export const fecthUser = username => (dispatch, getState) => {
   dispatch(requestUser(username));
   fetch(`https://api.github.com/users/${username}`)

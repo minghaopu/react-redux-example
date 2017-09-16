@@ -1,35 +1,56 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { FlatButton, TextField } from 'material-ui';
+
+import { AppBar, Divider, IconButton,  } from 'material-ui';
+import ActionSearch from 'material-ui/svg-icons/action/search';
 
 class Explore extends Component {
-  // componentWillMount() {
-  //   if (this.props.username)
-  // }
+  constructor(props) {
+    super(props);
+    this.state = {
+      input: props.username
+    }
+    this.handleChange = this.handleChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+  }
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps.username);
     if (nextProps.username !== this.props.username) {
-      this.setInputValue(nextProps.username);
-      // const { onSubmitClick } = this.props;
-      // onSubmitClick(nextProps.username);
+      this.setState({
+        input: nextProps.username
+      })
     }
   }
-  getInputValue() {
-    return this.refs.input.value;
-  }
-  setInputValue(val) {
-    this.refs.input.value = val;
+  handleChange(e) {
+    this.setState({
+      input: e.target.value
+    })
   }
   handleClick(e) {
-    // const { onSubmitClick } = this.props;
-    // onSubmitClick(this.getInputValue());
-    this.props.onChange(this.getInputValue());
+    this.props.onChange(this.state.input);
   }
   render() {
-    const { username } = this.props;
+    const { username, loading } = this.props;
     return (
       <div className='component-explore'>
-        <input type='text' defaultValue={username} ref='input' />
-        <button onClick={::this.handleClick}>Search</button>
+        
+
+        <AppBar 
+          title='Git Finder'
+          iconElementRight={
+            <div className="appBarIcons">
+              <TextField 
+                onChange={this.handleChange}
+                value={this.state.input}
+                hintText='Search Username'
+                ref = 'input'
+              />
+              <IconButton onClick={this.handleClick}>
+                <ActionSearch />
+              </IconButton>
+            </div>
+          }
+          showMenuIconButton={false} />
       </div>
     )
   }
@@ -37,8 +58,7 @@ class Explore extends Component {
 
 Explore.propTypes = {
   username: PropTypes.string.isRequired,
-  // onSubmitClick: PropTypes.func.isRequired,
-  onChange: PropTypes.func.isRequired
+  onChange: PropTypes.func.isRequired,
 }
 
 export default Explore;

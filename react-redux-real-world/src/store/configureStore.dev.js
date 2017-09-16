@@ -9,7 +9,7 @@ import DevTools from '../containers/DevTools';
 import routes from '../components/Routes'
 
 const enhancer = compose(
-  applyMiddleware(thunk, createLogger()),
+  applyMiddleware(thunk),
   reduxReactRouter({ routes, createHistory }),
   DevTools.instrument() 
 )

@@ -6,6 +6,8 @@ import { connect } from 'react-redux';
 import { push } from 'redux-router';
 import { fecthUser } from '../../actions';
 
+import { Divider  } from 'material-ui';
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -17,8 +19,7 @@ class App extends Component {
   }
   handleChange(nextValue) {
     const { push, fecthUser } = this.props;
-    push(nextValue);
-    fecthUser(nextValue);
+    push(`/${nextValue}`);
   }
   componentWillReceiveProps(nextProps) {
     const { username, fecthUser } = nextProps;
@@ -27,8 +28,11 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Explore onChange={this.handleChange} username={this.props.username}/>
-        <hr />
+        <Explore
+          onChange={this.handleChange}
+          username={this.props.username} 
+          />
+        <Divider />
         <div>
           {this.props.children}
         </div>
@@ -46,16 +50,7 @@ App.propTypes = {
 
 const mapStateToProps = state => {
   return {
-    username: state.router.location.pathname.substring(1)
+    username: state.router.location.pathname.substring(1),
 }};
-
-// const mapDispatchToProps = dispatch => ({
-//   loadData: username => {
-//     dispatch(fecthUser(username));
-//   },
-//   push: username => {
-//     dispatch(push(`/${username}`));
-//   }
-// });
 
 export default connect(mapStateToProps, { fecthUser, push })(App)
